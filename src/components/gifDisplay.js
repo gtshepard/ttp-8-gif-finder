@@ -11,10 +11,10 @@ class GifDisplay extends Component {
       return(
         <div className="gif-box">
           <div className="center-flex">
-          <img className="gif" src="https://media0.giphy.com/media/cfuL5gqFDreXxkWQ4o/480w_s.jpg?cid=d4d3bffa5cfd81224661644e2e62842e&rid=480w_s.jpg"/>
+              <img className="gif" src={this.props.gif}/>
           </div>
-
         </div>
+
       )
   }
 }
