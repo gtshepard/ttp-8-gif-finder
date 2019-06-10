@@ -29,6 +29,18 @@ class Gif extends Component {
   //  console.log(this.state.result)
   }
 
+  trending_gif_url = () => {
+    let base_url = process.env.REACT_APP_DEV_API_URL;
+    let key = process.env.REACT_APP_SECRET;
+    let request = base_url + "trending?api_key=" + key + "&limit=25";
+    console.log(request)
+    return request;
+  }
+
+  fetchTrendingGifs = async (target) => {
+    let data = (await axios.get(this.trending_gif_url())).data.data;
+    this.setState({result: data});
+  }
 
   onChangeHandle = (event) => {
       this.setState({search : event.target.value});
@@ -39,6 +51,9 @@ class Gif extends Component {
      this.fetchGifs(this.state.search);
   }
 
+  componentWillMount(){
+    this.fetchTrendingGifs();
+  }
   render(){
     let result = this.state.result || [];
 
